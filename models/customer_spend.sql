@@ -1,4 +1,5 @@
-select customer_id
-  , sum(amount) i_spent
-from `tobaz-114.dbt_mperry.raw_orders`
-group by 1
+select
+    customer_id,
+    sum(amount) as i_spent
+from {{ ref('raw_orders') }}
+group by customer_id
